@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login Page</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <center>
+        <div class="container">
+            <div class="header">
+                <h2>{ JAVASCRIPT AUTHENTICATION }</h2>
+            </div>
+            <div class="box">
+                <div class="loginbox">
+                    <form action="dashboard.html" method="POST" name="loginForm" class="logForm" onsubmit="return validateForm()">
+                        <div>
+                            <label for="username">USERNAME: </label>
+                            <input type="text" id="username" name="userfname" style="position: relative;" placeholder="Between 6-12 characters">
+                            <span id="usererror"></span>
+                        </div>
+                        <div>
+                            <label for="password">PASSWORD: </label>
+                            <input type="password" id="password" style="position: relative; left: 0.275%;" placeholder="Between 8-16 characters">
+                            <span id="passerror"></span>
+                        </div>
+                        <div class="login">
+                            <input class="subbutton" type="submit" value="Log In">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+
+        </div>
+    </center>
+
+</body>
+<script src="index.js"></script>
+
+</html>
