@@ -1,3 +1,7 @@
+var returnval;
+const fields = [];
+var ob = {};
+
 function seterror(id, error) {
     element = document.getElementById(id);
     element.innerHTML = error;
@@ -15,7 +19,7 @@ function seterror(id, error) {
 }
 
 function validateForm() {
-    var returnval = true;
+    returnval = true;
     var user = document.forms["loginForm"]["username"].value;
     var pass = document.forms["loginForm"]["password"].value;
     if (user.length == 0) {
@@ -44,7 +48,48 @@ function validateForm() {
         seterror("passerror", "");
     }
     if (returnval == true) {
-        localStorage.setItem("auth", 1);
+
     }
     return returnval;
+}
+
+function add() {
+    var user = document.forms["loginForm"]["username"].value;
+    var pass = document.forms["loginForm"]["password"].value;
+    if (localStorage.getItem(user) !== null) {
+        document.getElementById("usererror").innerHTML = "Username already registered";
+        document.getElementById("passerror").innerHTML = "";
+        document.getElementById("password").style.border = "2px solid black";
+    } else {
+        if (validateForm()) {
+            if (localStorage.getItem(user) !== null)
+                document.getElementById("usererror").innerHTML = "Username already registered";
+            else {
+                ob = {
+                    name: `"${user}"`,
+                    password: `"${pass}"`
+                };
+                fields.push(ob);
+                console.log(ob);
+                localStorage.setItem(user, pass);
+                document.getElementById("usererror").innerHTML = "Successfully registered";
+            }
+
+        }
+    }
+
+}
+
+function auth() {
+    var user = document.forms["loginForm"]["username"].value;
+    var pass = document.forms["loginForm"]["password"].value;
+    if (validateForm()) {
+        if (localStorage.getItem(user) == pass)
+            window.location.href = "dashboard.html";
+        else if (localStorage.getItem(user) === null)
+            document.getElementById("usererror").innerHTML = "Username does not exist";
+        else
+            document.getElementById("usererror").innerHTML = "Wrong Password";
+    }
+
 }
